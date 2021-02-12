@@ -2,7 +2,8 @@
 
 on:
   push:
-    branches: master
+    branches: 
+        - main
 
 jobs:
   docker-image:
@@ -30,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: rstropek/htl-leo-csharp-4-slides:latest
+          tags: didierz/htl-leo-csharp-4-slides:latest
