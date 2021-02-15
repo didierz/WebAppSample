@@ -5,6 +5,9 @@ on:
     branches: 
         - main
 
+  schedule:
+        - cron: '0 * * * *' 
+
 env:
     DOTNET_VERSION: '5.0.x'
     AZURE_WEBAPP_NAME: 'didierz-weather'
