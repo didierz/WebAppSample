@@ -5,8 +5,8 @@ on:
     branches: 
         - main
 
-  schedule:
-        - cron: '0 * * * *' 
+    #schedule:
+    #    - cron: '0 */5 * * *' 
 
 env:
     DOTNET_VERSION: '5.0.x'
