@@ -1,0 +1,18 @@
+﻿# Get Base SDK Image from Microsoft
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
+WORKDIR /app
+
+# COPY the CSPROJ file and restore any dependencies (via NUGET)
+COPY *.csproj ./
+RUN dotnet restore
+
+# COPY the project file and build our release
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# Generate runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
+WORKDIR /app
+EXPOSE 80
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "WebAppSample.dll"]
